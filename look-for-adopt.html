@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt a Pet</title>
+    <link rel="stylesheet" href="look-for-adopt.css">
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans+Condensed:wght@400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <h2>Available Pets for Adoption</h2>
+        <div id="petProfiles" class="pet-profiles"></div>
+    </div>
+
+    <footer class="footer">
+        <button onclick="redirectTo('welcome.html')" class="footer-btn">Back to Home</button>
+        <button onclick="redirectTo('contact.html')" class="footer-btn">Contact Us</button>
+    </footer>
+
+    <script>
+        function redirectTo(page) {
+            window.location.href = page;
+        }
+
+        window.addEventListener('load', () => {
+            const petData = JSON.parse(localStorage.getItem('petData'));
+            if (petData) {
+                displayPetProfile(petData);
+            } else {
+                document.getElementById('petProfiles').innerHTML = '<p>No pets available for adoption.</p>';
+            }
+        });
+
+        function displayPetProfile(data) {
+            const petProfilesDiv = document.getElementById('petProfiles');
+            const profileHTML = `
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="${data.picture}" alt="Pet Picture" class="pet-image">
+                            <h3>${data.animal} - ${data.petName}</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>${data.animal} - ${data.petName}</h3>
+                            <p><strong>Breed:</strong> ${data.breed}</p>
+                            <p><strong>Age:</strong> ${data.age}</p>
+                            <p><strong>Medical Details:</strong> ${data.medical}</p>
+                            <button onclick="viewProfile('${data.id}')" class="btn btn-info">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            petProfilesDiv.innerHTML = profileHTML;
+        }
+
+        function viewProfile(petId) {
+            window.location.href = `petProfile.html?id=${petId}`;
+        }
+    </script>
+</body>
+</html>

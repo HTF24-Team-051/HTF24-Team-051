@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Put Your Pet for Adoption</title>
+    <link rel="stylesheet" href="put-for-adoption.css">
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans+Condensed:wght@400&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <div class="container">
+        <h2>Put Your Pet for Adoption</h2>
+        <form id="petForm">
+            <div class="form-group">
+                <label for="animal">Animal Type:</label>
+                <select class="form-control" id="animal" required>
+                    <option value="">Select Animal</option>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Fish">Fish</option>
+                    <option value="Bird">Bird</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="petName">Name of the Animal:</label>
+                <input type="text" class="form-control" id="petName" placeholder="Enter pet's name" required>
+            </div>
+            <div class="form-group">
+                <label for="breed">Breed:</label>
+                <input type="text" class="form-control" id="breed" placeholder="Enter breed" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" class="form-control" id="age" placeholder="Enter age" required>
+            </div>
+            <div class="form-group">
+                <label for="medical">Medical Details:</label>
+                <input type="text" class="form-control" id="medical" placeholder="Enter medical details (if any)" required>
+            </div>
+            <div class="form-group">
+                <label for="picture">Upload Picture of the Pet:</label>
+                <input type="file" class="form-control-file" id="picture" accept="image/*" required>
+            </div>
+            <h3>Owner Details</h3>
+            <div class="form-group">
+                <label for="ownerName">Owner's Name:</label>
+                <input type="text" class="form-control" id="ownerName" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Owner's Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Number:</label>
+                <input type="tel" class="form-control" id="contact" placeholder="Enter your contact number" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea class="form-control" id="address" rows="3" placeholder="Enter your address" required></textarea>
+            </div>
+            <h3>Optional Details</h3>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select class="form-control" id="gender">
+                    <option value="">Select Gender (Optional)</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quirks">Quirks:</label>
+                <textarea class="form-control" id="quirks" rows="3" placeholder="Unique qualities or quirks"></textarea>
+            </div>
+            <h3>Verification</h3>
+            <div class="form-group">
+                <label for="idProof">Upload ID Proof:</label>
+                <input type="file" class="form-control-file" id="idProof" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div id="cardPreview" class="card-preview" style="display:none;">
+            <h4>Pet Card Preview</h4>
+            <div id="petCard"></div>
+            <button class="btn btn-success btn-action" onclick="verifyCard()">Verify</button>
+            <button class="btn btn-warning btn-action" onclick="editDetails()">Continue Editing</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("petForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            generatePetCard();
+        });
+
+        function generatePetCard() {
+            const petDetails = {
+                id: Date.now(),
+                animal: document.getElementById("animal").value,
+                name: document.getElementById("petName").value,
+                breed: document.getElementById("breed").value,
+                age: document.getElementById("age").value,
+                medical: document.getElementById("medical").value || 'None',
+                ownerName: document.getElementById("ownerName").value,
+                ownerEmail: document.getElementById("email").value,
+                ownerContact: document.getElementById("contact").value,
+                ownerAddress: document.getElementById("address").value,
+                ownerWhatsApp: document.getElementById("whatsapp").value || '',
+                quirks: document.getElementById("quirks").value || 'N/A',
+                gender: document.getElementById("gender").value || 'N/A',
+                picture: '' // Will be set from file reader
+            };
+
+            const pictureInput = document.getElementById("picture");
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                petDetails.picture = e.target.result;
+                localStorage.setItem('petData', JSON.stringify(petDetails));
+                
+                const cardHTML = `
+                    <div>
+                        <img src="${petDetails.picture}" alt="Pet Picture" style="width: 100px; height: 100px; border-radius: 10px;">
+                        <h5>${petDetails.animal} - ${petDetails.name}</h5>
+                        <p>Breed: ${petDetails.breed}</p>
+                        <p>Age: ${petDetails.age}</p>
+                        <p>Medical Details: ${petDetails.medical}</p>
+                        <p>Owner: ${petDetails.ownerName}</p>
+                        <p>Email: ${petDetails.ownerEmail}</p>
+                        <p>Contact: ${petDetails.ownerContact}</p>
+                        <p>Address: ${petDetails.ownerAddress}</p>
+                    </div>
+                `;
+                
+                document.getElementById("petCard").innerHTML = cardHTML;
+                document.getElementById("cardPreview").style.display = "block";
+            };
+
+            if (pictureInput.files && pictureInput.files[0]) {
+                reader.readAsDataURL(pictureInput.files[0]);
+            }
+        }
+
+        function verifyCard() {
+            alert("Card verified! Pet profile successfully created.");
+            window.location.href = `petProfile.html?id=${Date.now()}`; // Redirect to profile page
+        }
+
+        function editDetails() {
+            alert("Edit the details and resubmit.");
+            document.getElementById("cardPreview").style.display = "none";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+body {
+    background-color: #9d84ba;
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.15) 15%, transparent 20%), 
+                      radial-gradient(circle, rgba(0, 0, 0, 0.1) 10%, transparent 15%);
+    background-size: 80px 80px, 60px 60px;
+    background-position: 0 0, 40px 40px;
+    color: #f1ecec;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 28px; 
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'RedditSansCondensed';
+    src: url('path-to-your-font/redditsans-condensed.woff2') format('woff2'),
+         url('path-to-your-font/redditsans-condensed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'RedditSansCondensed', sans-serif;
+  }
+  
+
+.container {
+    width: 400px;
+    height: auto;
+    position: relative;
+}
+
+h1 {
+    font-size: 50px; 
+    text-transform: uppercase;
+    margin: 15px 0;
+}
+
+h1 span {
+    display: block;
+    color: white;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+    transform: translateY(-50px);
+    opacity: 0;
+    animation: titleAnimation 4s ease forwards; 
+}
+
+h1 span:nth-child(1) {
+    animation-delay: 0.8s;
+}
+
+h1 span:nth-child(2) {
+    animation-delay: 1.6s;
+}
+
+h1 span:nth-child(3) {
+    animation-delay: 2.4s;
+}
+
+.content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+    height: 400px;
+}
+
+.content.hidden {
+    display: none;
+}
+
+.content:not(.hidden) {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn1 {
+    padding: 20px 40px;
+    font-size: 22px;
+    border: none;
+    border-radius: 12px;
+    background-color: #dfb1f5;
+    color: white;
+    font-weight: bold;
+    box-shadow: 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn1 {
+    font-family: 'RedditSansCondensed', sans-serif;
+    padding: 20px 35px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+
+.btn1:active {
+    transform: scale(0.95);
+    box-shadow: 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes titleAnimation {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+        clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 80%);
+    }
+    20%, 80% {
+        transform: translateY(0);
+        opacity: 1;
+        clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 15%);
+    }
+    100% {
+        transform: translateY(50px);
+        opacity: 0;
+        clip-path: polygon(100% 0, 100% 0%, 0 100%, 0 100%);
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background-color: #9d84ba; /* Match with body background */
+}
+
+.footer-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #dfb1f5;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.footer-btn:active {
+    transform: scale(0.95);
+    box-shadow: 1px 2px rgba(0, 0, 0, 0.2);
+}

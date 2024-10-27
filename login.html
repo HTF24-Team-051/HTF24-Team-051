@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pets - Login</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+</head>
+<body id="bg"> 
+
+    <center>
+        <div id="main1">
+            <h1>WELCOME BACK!</h1>
+            <form id="loginForm">
+                <div class="form">
+                    <input type="text" autocomplete="off" required id="loginuser" />
+                    <label class="label-name">
+                        <span class="content-name">ENTER USERNAME</span>
+                    </label>
+                </div>
+                <div class="form">
+                    <input type="password" autocomplete="off" required id="loginpass"/>
+                    <label class="label-name">
+                        <span class="content-name">ENTER PASSWORD</span>
+                    </label>
+                </div>
+                <button type="button" id="btn1" onclick="login()">SIGN IN</button>
+                <p id="loginMessage"></p>
+            </form>
+            <p>New User? <a href="signup.html">Sign Up!</a></p>
+        </div>
+    </center>
+    <script src="script.js" defer></script>
+</body>
+
+<div id="footer-container"></div>
+<script src="loadFooter.js"></script>
+
+</html>

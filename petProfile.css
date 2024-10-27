@@ -1,0 +1,41 @@
+body {
+    background-color: #9f84ba;
+    color: #4a2c3a;
+    font-family: Arial, sans-serif;
+}
+@font-face {
+    font-family: 'RedditSansCondensed';
+    src: url('path-to-your-font/redditsans-condensed.woff2') format('woff2'),
+         url('path-to-your-font/redditsans-condensed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f1e9e1;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: "Reddit Sans Condensed";
+}
+
+.pet-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.details {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    font-family: "Reddit Sans Condensed";
+}

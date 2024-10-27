@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Profile</title>
+    <link rel="stylesheet" href="petProfile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans+Condensed:wght@400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <h2 id="petName"></h2>
+        <img id="petImage" src="" alt="Pet Picture" class="pet-img">
+        <div class="details">
+            <p><strong>Animal:</strong> <span id="petAnimal"></span></p>
+            <p><strong>Breed:</strong> <span id="petBreed"></span></p>
+            <p><strong>Age:</strong> <span id="petAge"></span></p>
+            <p><strong>Gender:</strong> <span id="petGender"></span></p>
+            <p class="section-title">Owner Information:</p>
+            <p><strong>Name:</strong> <span id="ownerName"></span></p>
+            <p><strong>Email:</strong> <span id="ownerEmail"></span></p>
+            <p><strong>Contact Number:</strong> <span id="ownerContact"></span></p>
+            <p><strong>Address:</strong> <span id="ownerAddress"></span></p>
+            <p class="section-title">Additional Information:</p>
+            <p><strong>Medical Details:</strong> <span id="petMedical"></span></p>
+            <p><strong>Quirks:</strong> <span id="petQuirks"></span></p>
+            <button class="btn btn-secondary mt-3" onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        function displayPetProfile() {
+            const petData = JSON.parse(localStorage.getItem('petData'));
+            if (petData) {
+                document.getElementById("petName").innerText = petData.name;
+                document.getElementById("petImage").src = petData.picture;
+                document.getElementById("petAnimal").innerText = petData.animal;
+                document.getElementById("petBreed").innerText = petData.breed;
+                document.getElementById("petAge").innerText = petData.age;
+                document.getElementById("petGender").innerText = petData.gender;
+                document.getElementById("ownerName").innerText = petData.ownerName;
+                document.getElementById("ownerEmail").innerText = petData.ownerEmail;
+                document.getElementById("ownerContact").innerText = petData.ownerContact;
+                document.getElementById("ownerWhatsApp").innerText = petData.ownerWhatsApp;
+                document.getElementById("ownerAddress").innerText = petData.ownerAddress;
+                document.getElementById("petMedical").innerText = petData.medical;
+                document.getElementById("petQuirks").innerText = petData.quirks;
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        window.onload = displayPetProfile;
+    </script>
+</body>
+</html>

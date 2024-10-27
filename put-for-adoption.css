@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; 
+    width: 100%;
+    background-color: #9d84ba;
+    background-image: radial-gradient(circle at 10% 20%, #f1ecec 12%, transparent 12.5%), 
+                      radial-gradient(circle at 40% 40%, #f1ecec 8%, transparent 8.5%), 
+                      radial-gradient(circle at 70% 70%, #f1ecec 10%, transparent 10.5%), 
+                      radial-gradient(circle at 90% 20%, #f1ecec 6%, transparent 6.5%);
+    background-size: 100px 100px;
+    background-position: 0 0, 50px 50px, 100px 100px, 75px 75px;
+    font-family: 'Arial', sans-serif;
+    color: #f1ecec;
+    overflow-y: auto; /* Enable page scroll */
+}
+
+/* Flex container to center the content */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top initially */
+    padding: 40px 0; /* Extra space for top and bottom padding */
+    min-height: 100vh;
+}
+
+/* Container styling */
+.container {
+    background-color: #b998c4;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 600px;
+    width: 100%;
+    margin: 20px;
+}
+
+/* Headings */
+h2, h3 {
+    text-align: center;
+    margin-bottom: 16px;
+    color: #f1ecec;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label and input styling */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #e1d6ea;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #7d617f;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #9d84ba;
+    background-color: #f1ecec;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d6c1da;
+}
+
+/* Card preview styling */
+.card-preview {
+    display: none;
+    border: 1px solid #f1ecec;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #b998c4;
+    text-align: center;
+}
+
+.card-preview img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
